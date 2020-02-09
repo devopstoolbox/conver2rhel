@@ -1,0 +1,11 @@
+---
+# Configure conver2rhel
+
+- name: service is enabled and started
+  service:
+    name: "{{ item }}"
+    enabled: true
+    state: started
+  become: true
+  loop: "{{ conver2rhel_services_enable }}"
+  when: conver2rhel_enable_service

@@ -1,0 +1,10 @@
+---
+# Template configuration files for conver2rhel
+
+- name: template is copied
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  become: true
+  loop: "{{ conver2rhel_templates_copy }}"
+  when: conver2rhel_copy_templates

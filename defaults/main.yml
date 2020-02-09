@@ -1,0 +1,19 @@
+---
+# defaults file for conver2rhel
+
+conver2rhel_packages_state: present
+conver2rhel_remove_packages: true
+conver2rhel_enable_service: true
+conver2rhel_enable_selinux: true
+conver2rhel_copy_templates: true
+conver2rhel_firewall_configure: true
+conver2rhel_firewall_rules:
+  - service: ssh
+  - port: 3389
+conver2rhel_users:
+  - user: devops
+    group: docker
+conver2rhel_selinux_booleans:
+  - name: ftp_home_dir
+    state: true
+    persistent: true

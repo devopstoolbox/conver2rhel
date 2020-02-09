@@ -1,0 +1,13 @@
+---
+# Template configuration files for conver2rhel
+
+- name: Set SELinux booleans
+  seboolean:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+    persistent: "{{ item.persistent | default('false') }}"
+  loop: "{{ conver2rhel_selinux_booleans }}"
+  when:
+    - ansible_selinux.status == "enabled"
+    - conver2rhel_enable_selinux
+  become: true

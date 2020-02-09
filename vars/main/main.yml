@@ -1,0 +1,44 @@
+---
+# vars file for packages
+
+# Detected OS
+my_os: "{{ ansible_distribution }}_{{ ansible_distribution_major_version }}"
+
+# Repos create
+conver2rhel_repos_create: "{{ _conver2rhel_repos_create['all']
+  | union ( _conver2rhel_repos_create[my_os]
+  | default([]) ) }}"
+
+# Repos download
+conver2rhel_repos_download: "{{ _conver2rhel_repos_download['all']
+  | union ( _conver2rhel_repos_download[my_os]
+  | default([]) ) }}"
+
+# Templates Copy
+conver2rhel_templates_copy: "{{ _conver2rhel_templates_copy['all']
+  | union ( _conver2rhel_templates_copy[my_os]
+  | default([]) ) }}"
+
+# Services Enable
+conver2rhel_services_enable: "{{ _conver2rhel_services_enable['all']
+  | union ( _conver2rhel_services_enable[my_os]
+  | default([]) ) }}"
+
+# SELinux Enable
+conver2rhel_selinux_enable: "{{ _conver2rhel_selinux_enable['all']
+  | union ( _conver2rhel_selinux_enable[my_os]
+  | default([]) ) }}"
+
+# Packages lists
+conver2rhel_packages_remove: "{{ _conver2rhel_packages_remove['all']
+  | union ( _conver2rhel_packages_remove[my_os]
+  | default([]) ) }}"
+conver2rhel_packages_repos: "{{ _conver2rhel_packages_repos['all']
+  | union ( _conver2rhel_packages_repos[my_os]
+  | default([]) ) }}"
+conver2rhel_packages_prereq: "{{ _conver2rhel_packages_prereq['all']
+  | union ( _conver2rhel_packages_prereq[my_os]
+  | default([]) ) }}"
+conver2rhel_packages_install: "{{ _conver2rhel_packages_install['all']
+  | union ( _conver2rhel_packages_install[my_os]
+  | default([]) ) }}"
